@@ -1,0 +1,16 @@
+import Part1
+
+in_filename = input("Enter input file name: ")
+out_filename = input("Enter output file name: ")
+data_list = Part1.get_data(in_filename)
+file_stream = open(out_filename, 'w')
+file_stream.write("Mean: %.4f\n" % Part1.get_mean(data_list))
+file_stream.write("Midrange: %.4f\n" % Part1.get_midrange(data_list))
+mode = Part1.get_mode(data_list)
+file_stream.write("Mode: " + str(mode[1]) + "\n")
+file_stream.write("Modality: " + mode[0] + "\n")
+file_stream.write("Median: %.4f\n" % Part1.get_median(data_list))
+file_stream.write("Quartile 1: %.4f\n" % Part1.get_q1(data_list))
+file_stream.write("Quartile 3: %.4f\n" % Part1.get_q3(data_list))
+file_stream.write("Max: %.4f\n" % max(data_list))
+file_stream.write("Min: %.4f\n" % min(data_list))
