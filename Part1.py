@@ -1,5 +1,3 @@
-from functools import reduce
-
 def get_data(file_name):
     try:
         file_stream = open(file_name, 'r')
@@ -17,8 +15,12 @@ def get_data(file_name):
 
 
 def get_mean(data_list):
+    data_sum = 0
     try:
-        data_sum = reduce((lambda x, y: x + y), data_list)
+        if len(data_list) == 0:
+            raise TypeError
+        for i in data_list:
+            data_sum += i
     except TypeError:
         print("Error: cannot find average of empty list")
         return None
@@ -39,7 +41,7 @@ def get_median(data_list):
     if length % 2 == 1:
         return data_list[length//2]
     else:
-        return (data_list[(length-1)//2] + data_list[(length//2)])/2.0
+        return (data_list[(length-1)//2] + data_list[(length//2)])/2
 
 
 def get_q1(data_list):

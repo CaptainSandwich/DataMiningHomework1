@@ -66,6 +66,9 @@ class TestGetMedian(unittest.TestCase):
     def test_4(self):
         self.assertAlmostEqual(Part1.get_median([4, 5, 6, 7]), 5.5, 4)
 
+    def test_5(self):
+        self.assertAlmostEqual(Part1.get_median([5]), 5, 4)
+
 
 class TestGetQ1(unittest.TestCase):
     def test_1(self):
