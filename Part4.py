@@ -1,5 +1,5 @@
 import Part3
-
+import random
 
 def histogram(data_list):
     sorted_list = sorted(data_list)
@@ -33,4 +33,48 @@ def print_histogram(data_list):
     for i in range(0, len(normalized_list)):
         print((str(group) + "-" + str(group + 9)).ljust(5) + "|" + ('*' * round(normalized_list[i])).ljust(101) + str(data_list[i]))
         group += 10
+
+
+def SRSWR(data_list, s):
+    sample = []
+    for i in range(0, s):
+        sample.append(data_list[random.randint(0, len(data_list) - 1)])
+    return sample
+
+
+def SRSWOR(data_list, s):
+    sample = []
+    for i in range(0, s):
+        index = random.randint(0, len(data_list))
+        sample.append(data_list[index])
+        data_list.pop(index)
+    return sample
+
+
+def stratified(data_list, s):
+    sorted_list = sorted(data_list)
+    young = range(0, 33)
+    middle_aged = range(33, 60)
+
+    young_list = []
+    middle_aged_list = []
+    old_list = []
+
+    index = 0
+    while sorted_list[index] in young:
+        young_list.append(sorted_list[index])
+        index += 1
+
+    while sorted_list[index] in middle_aged:
+        middle_aged_list.append(sorted_list[index])
+        index += 1
+
+    for i in range(index, len(sorted_list)):
+        old_list.append(sorted_list[i])
+
+    return [SRSWR(young_list, s), SRSWR(middle_aged_list, s), SRSWR(old_list, s)]
+
+
+
+
 
