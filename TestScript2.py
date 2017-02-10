@@ -38,32 +38,32 @@ class TestEqWidthMedians(unittest.TestCase):
     def test1(self):
         data_list = [4, 8, 15, 21, 21, 24, 25, 28, 34]
         bin_list = Part2.equal_width_median(data_list, 10, 4, 34)
-        self.assert_floats_equal([6.0, 21.0, 25.0, 34.0], bin_list)
-
+        self.assertEqual([[6.0, 6.0], [21, 21, 21], [25, 25, 25], [34]], bin_list)
 
     def test2(self):
         data_list = [4, 8, 15, 21, 21, 24, 25, 28, 34]
-        self.assertEqual(Part2.equal_width_median(data_list, 10, 14, 30), [21, 25])
+        self.assertEqual(Part2.equal_width_median(data_list, 10, 14, 30), [[21, 21, 21], [25, 25, 25]])
 
     def test3(self):
         data_list = [98, 99, 100, 101]
-        self.assertEqual(Part2.equal_width_median(data_list, 3, 0, 10), [0, 0, 0, 0])
+        self.assertEqual(Part2.equal_width_median(data_list, 3, 0, 10), [[], [], [], []])
 
     def test4(self):
         data_list = [98, 99, 100, 101]
-        self.assertEqual(Part2.equal_width_median(data_list, 3, 200, 210), [0, 0, 0, 0])
+        self.assertEqual(Part2.equal_width_median(data_list, 3, 200, 210), [[], [], [], []])
 
     def test5(self):
         data_list = [4, 8, 15, 21, 21, 24, 25, 28, 34]
-        self.assertEqual(Part2.equal_width_median(data_list, 3, 0, 24), [0, 4, 8, 0, 0, 15, 0, 21, 24])
+        self.assertEqual(Part2.equal_width_median(data_list, 3, 0, 24), [[], [4], [8], [], [], [15], [], [21, 21], [24]])
 
     def test6(self):
         data_list = [4, 8, 15, 21, 21, 24, 25, 28, 34]
-        self.assertEqual(Part2.equal_width_median(data_list, 3, 21, 50), [21, 24.5, 28, 0, 34, 0, 0, 0, 0, 0])
+        self.assertEqual(Part2.equal_width_median(data_list, 3, 21, 50), [[21, 21], [24.5, 24.5], [28], [], [34], [], [], [], [], []])
 
     def test7(self):
         data_list = [13, 15, 16, 16, 19, 20, 20, 21, 22, 22, 25, 25, 25, 25, 30, 33, 33, 35, 35, 35, 35, 36, 40, 45, 46, 52, 70, 99]
-        self.assertEqual(Part2.equal_width_median(data_list, 10, 0, 99), [0, 16, 22, 35, 45, 52, 0, 70, 0, 99])
+        self.assertEqual(Part2.equal_width_median(data_list, 10, 0, 99), [[], [16, 16, 16, 16, 16], [22, 22, 22, 22, 22, 22, 22, 22 ,22],
+                                                                          [35, 35, 35, 35, 35, 35, 35, 35], [45, 45, 45], [52], [], [70], [], [99]])
 
 
 class TestGetRanges(unittest.TestCase):

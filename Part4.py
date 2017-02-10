@@ -1,6 +1,7 @@
 import Part3
 import random
 
+
 def histogram(data_list):
     sorted_list = sorted(data_list)
     start = 0
@@ -27,11 +28,11 @@ def histogram(data_list):
     return binned_list
 
 
-def print_histogram(data_list):
+def write_histogram(data_list, file_stream):
     normalized_list = Part3.min_max(data_list, 0, 100)
     group = 0
     for i in range(0, len(normalized_list)):
-        print((str(group) + "-" + str(group + 9)).ljust(5) + "|" + ('*' * round(normalized_list[i])).ljust(101) + str(data_list[i]))
+        file_stream.write((str(group) + "-" + str(group + 9)).ljust(5) + "|" + ('*' * round(normalized_list[i])).ljust(101) + str(data_list[i]) + "\n")
         group += 10
 
 
@@ -73,8 +74,3 @@ def stratified(data_list, s):
         old_list.append(sorted_list[i])
 
     return [SRSWR(young_list, s), SRSWR(middle_aged_list, s), SRSWR(old_list, s)]
-
-
-
-
-

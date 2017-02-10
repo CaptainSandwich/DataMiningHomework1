@@ -1,9 +1,1 @@
-Mean: 29.9630
-Midrange: 41.5000
-Mode: [25, 35]
-Modality: bimodal
-Median: 25.0000
-Quartile 1: 20.0000
-Quartile 3: 35.0000
-Max: 70.0000
-Min: 13.0000
+

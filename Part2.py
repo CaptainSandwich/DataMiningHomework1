@@ -55,7 +55,8 @@ def equal_width_median(data_list, d, l, r):
             temp_list.append(sorted_list[index])
             index += 1
         if len(temp_list) == 0:
-            binned_list.append(0)
+            binned_list.append([[] for i in temp_list])
         else:
-            binned_list.append(Part1.get_median(temp_list))
+            median = Part1.get_median(temp_list)
+            binned_list.append([median for i in temp_list])
     return binned_list

@@ -1,3 +1,24 @@
+import Part1
 import Part4
 
-print(Part4.stratified([13, 15, 16, 16, 19, 20, 20, 21, 22, 22, 25, 25, 25, 25, 30, 33, 33, 35, 35, 35, 35, 36, 40, 45, 46, 52, 70], 5))
+in_filename = input("Enter input file name: ")
+out_filename = input("Enter output file name: ")
+data_list = Part1.get_data(in_filename)
+file_stream = open(out_filename, 'w')
+s = int(input("Enter sample size"))
+
+file_stream.write("Histogram:\n")
+hist = Part4.histogram(data_list)
+Part4.write_histogram(hist, file_stream)
+
+file_stream.write("SRSWR\n")
+file_stream.write(str(Part4.SRSWR(data_list, s)) + "\n")
+
+file_stream.write("SRSWOR\n")
+file_stream.write(str(Part4.SRSWOR(data_list, s)) + "\n")
+
+file_stream.write("Stratified\n")
+strat_list = Part4.stratified(data_list, s)
+file_stream.write("Young: " + str(strat_list[0]) + "\n")
+file_stream.write("Middle-age: " + str(strat_list[1]) + "\n")
+file_stream.write("Old: " + str(strat_list[2]) + "\n")

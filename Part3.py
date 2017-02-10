@@ -1,4 +1,5 @@
 import Part1
+
 def min_max(data_list, new_min, new_max):
     old_min = min(data_list)
     old_max = max(data_list)
